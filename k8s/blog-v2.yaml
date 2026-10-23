@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-v2
+  labels:
+    app: blog
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blog
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: blog
+        version: v2
+    spec:
+      containers:
+        - name: blog
+          image: YOUR_DOCKERHUB_USERNAME/blog-app:v2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-v2-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: blog
+    version: v2
+  ports:
+    - port: 8082
+      targetPort: 5000
