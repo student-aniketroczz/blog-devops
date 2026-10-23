@@ -31,7 +31,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds',
                                                   usernameVariable: 'DH_USER',
                                                   passwordVariable: 'DH_PASS')]) {
-                    bat 'echo %DH_PASS% | docker login -u %DH_USER% --password-stdin'
+                    bat 'docker login -u %DH_USER% -p %DH_PASS%'
                     script {
                         for (v in ['v1', 'v2', 'v3']) {
                             bat "docker push %DOCKERHUB_USER%/%IMAGE_NAME%:${v}"
