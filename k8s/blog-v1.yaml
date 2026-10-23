@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: blog
-          image: YOUR_DOCKERHUB_USERNAME/blog-app:v1
+          image: aniketdevops1/blog-app:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 5000

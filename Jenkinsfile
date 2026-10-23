@@ -5,7 +5,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_USER = 'YOUR_DOCKERHUB_USERNAME'   // <-- change this
+        DOCKERHUB_USER = 'aniketdevops1'   // <-- change this
         IMAGE_NAME     = 'blog-app'
     }
 
